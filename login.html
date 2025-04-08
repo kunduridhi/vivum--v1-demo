@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advivum - Login & Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            width: 400px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #0077B5;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            background: #0077B5;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .toggle-link {
+            color: #0077B5;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Signup Form -->
+        <form id="signupForm" onsubmit="return validateSignupForm()">
+            <h2>Join Advivum</h2>
+            <label>First Name:</label>
+            <input type="text" id="first_name" required>
+
+            <label>Last Name:</label>
+            <input type="text" id="last_name" required>
+
+            <label>Gender:</label>
+            <select id="gender" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label>Region:</label>
+            <select id="region" required>
+                <option value="">Select</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="America">America</option>
+                <option value="Africa">Africa</option>
+                <option value="Australia">Australia</option>
+            </select>
+
+            <label>University/Organization Name:</label>
+            <input type="text" id="university" required>
+
+            <label>Position:</label>
+            <input type="text" id="position" required>
+
+            <label>Your Institution Email:</label>
+            <input type="email" id="email_signup" required>
+
+            <label>Contact Number (With Country Code):</label>
+            <input type="tel" id="contact" required>
+
+            <label>Password:</label>
+            <input type="password" id="password_signup" required>
+
+            <label>Confirm Password:</label>
+            <input type="password" id="confirm_password" required>
+
+            <input type="checkbox" id="terms" required>
+            <label for="terms"> I agree to the <a href="#">Terms of Service</a> and acknowledge the <a href="#">Privacy Policy</a>.</label>
+
+            <button type="submit" class="btn">Sign Up</button>
+            <span class="toggle-link" onclick="toggleForms()">Already have an account? Login</span>
+        </form>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="hidden" onsubmit="return validateLoginForm()">
+            <h2>Welcome Back</h2>
+            <label>Email:</label>
+            <input type="email" id="email_login" required>
+
+            <label>Password:</label>
+            <input type="password" id="password_login" required>
+
+            <button type="submit" class="btn">Login</button>
+            <span class="toggle-link" onclick="toggleForms()">Don't have an account? Sign Up</span>
+        </form>
+    </div>
+
+    <script>
+        function toggleForms() {
+            document.getElementById("signupForm").classList.toggle("hidden");
+            document.getElementById("loginForm").classList.toggle("hidden");
+        }
+
+        function validateSignupForm() {
+            const password = document.getElementById("password_signup").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+
+        function validateLoginForm() {
+            // You can add more login validation here
+            return true;
+        }
+    </script>
+</body>
+</html>
